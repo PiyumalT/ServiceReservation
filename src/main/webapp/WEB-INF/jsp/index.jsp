@@ -21,7 +21,7 @@
                 <h2>Login</h2>
                 <p>Log in using a third-party authentication service:</p>
                 <img src="img/login.png" width="100" height="100" alt="Login img">
-                <a href="home.jsp" class="btn btn-primary btn-lg btn-block mt-5">Login with Third-Party Service</a>
+                <a href="home" class="btn btn-primary btn-lg btn-block mt-5">Login with Third-Party Service</a>
             </div>
             <!-- Error Message Div -->
             <%

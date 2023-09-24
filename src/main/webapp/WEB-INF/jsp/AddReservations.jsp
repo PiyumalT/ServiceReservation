@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,29 +21,7 @@
                 <img src="img/new_reserve.png" width="100" height="100" alt="Login img" style="margin-left: 45%">
                 <h2 class="text-center">Make a Reservation</h2>
                 <!-- Reservation form -->
-                <form action="" method="POST">
-                    <!-- User information -->
-<%--                    <div class="form-group">--%>
-<%--                        <label for="date">Date</label>--%>
-<%--                        <input type="date" path="date" class="form-control" id="r_date" name="date" required>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="time">Time</label>--%>
-<%--                        <input type="time" path class="form-control" id="time" name="time" required>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="location">Email</label>--%>
-<%--                        <input type="text" class="form-control" id="location" name="location" required>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="vehicleNum">Contact Number</label>--%>
-<%--                        <input type="text" class="form-control" id="vehicleNum" name="vehicleNum" required>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="mileage">Country</label>--%>
-<%--                        <input type="number" class="form-control" id="mileage" name="mileage" required>--%>
-<%--                    </div>--%>
-
+                <form action="AddReservations" method="POST" modelAttribute="reservation">
                     <!-- Reservation details -->
                     <div class="form-group">
                         <label for="date">Date of Reservation</label>
@@ -65,8 +44,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="vehicleRegistration">Vehicle Registration Number</label>
-                        <input type="text" class="form-control" path="vehicleRegistration" id="vehicleRegistration" name="vehicleRegistration" required>
+                        <label for="vehicle_no">Vehicle Registration Number</label>
+                        <input type="text" class="form-control" path="vehicle_no" id="vehicle_no" name="vehicle_no" required>
                     </div>
                     <div class="form-group">
                         <label for="mileage">Current Mileage</label>

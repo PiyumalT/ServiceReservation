@@ -25,10 +25,10 @@
                         <a href="view-profile.jsp" class="btn btn-info btn-lg btn-block p-3">View Profile info</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="make-reservation.jsp" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
+                        <a href="AddReservations" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="view-reservations.jsp" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
+                        <a href="ViewReservations" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
                     </div>
                     <div class="col-md-5 mb-3">
                         <a href="cancel-reservations.jsp" class="btn btn-warning btn-lg btn-block p-3">Cancel Reservations</a>

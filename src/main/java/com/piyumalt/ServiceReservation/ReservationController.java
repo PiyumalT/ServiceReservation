@@ -21,29 +21,36 @@ public class ReservationController {
         return "home";
     }
 
-    @GetMapping("/serviceRecords")
+    @GetMapping("/ViewReservations")
     public String getAllServiceRecords(Model model, @ModelAttribute("message") String message) {
         model.addAttribute("serviceRecords", reservationService.getAllServiceRecords());
         model.addAttribute("message", message);
-        return "serviceRecords";
+        return "ViewReservations";
     }
 
-    @GetMapping("/addServiceRecord")
+    @GetMapping("/AddReservations")
     public String addServiceRecord(Model model) {
         model.addAttribute("reservation", new Reservation());
-        return "addServiceRecord";
+        return "AddReservations";
     }
 
-    @PostMapping("/addServiceRecord")
-    public String addServiceRecord(Reservation reservation, RedirectAttributes redirectAttributes) {
+    @PostMapping("/AddReservations")
+    public String addServiceRecord(@ModelAttribute("reservation") Reservation reservation, RedirectAttributes redirectAttributes) {
         if (reservationService.addServiceRecord(reservation)) {
-            return "redirect:/serviceRecords?message=Service Record Added Successfully";
+            return "redirect:/view-reservation-details?message=Service Record Added Successfully";
         }
         else{
-            return "redirect:/serviceRecords?message=Service Record Not Added";
+            return "redirect:/AddReservations?message=Service Record Not Added";
         }
-
     }
+
+    @GetMapping("/view-reservation-details")
+    public String viewReservationDetails(Model model, @ModelAttribute("message") String message) {
+        model.addAttribute("serviceRecords", reservationService.getAllServiceRecords());
+        model.addAttribute("message", message);
+        return "view-reservation-details";
+    }
+
     @DeleteMapping("/deleteServiceRecord/{id}")
        public String deleteServiceRecord(@PathVariable int id, RedirectAttributes redirectAttributes) {
             if (reservationService.deleteServiceRecord(id)) {

@@ -24,7 +24,7 @@ public class Reservation {
     private String vehicle_no;
 
     @Column
-    private int millage;
+    private int mileage;
 
     @Column
     private String message;
@@ -35,7 +35,55 @@ public class Reservation {
     public Reservation() {
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public void setVehicle_no(String vehicle_no) {
+        this.vehicle_no = vehicle_no;
+    }
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
     public long getId() {
         return id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+    public String getTime() {
+        return time;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public String getVehicle_no() {
+        return vehicle_no;
+    }
+    public int getMileage() {
+        return mileage;
+    }
+    public String getMessage() {
+        return message;
+    }
+    public String getUsername() {
+        return username;
     }
 }
