@@ -14,13 +14,13 @@ public class ReservationService {
     List<Reservation> getAllServiceRecords() {
         return reservationRepo.findAll();
     }
-    public Reservation getServiceRecordById(long id) {
-        return reservationRepo.findById(id).get();
+    public Reservation getServiceRecordById(int id) {
+        return reservationRepo.findById((long) id).get();
     }
 
     boolean addServiceRecord(Reservation reservation) {
         Reservation newReservation = reservationRepo.save(reservation);
-        if (getServiceRecordById(newReservation.getId()) != null) {
+        if (getServiceRecordById((int) newReservation.getId()) != null) {
             return true;
         }
         else{
@@ -28,8 +28,8 @@ public class ReservationService {
         }
     }
 
-    boolean deleteServiceRecord(long id) {
-        reservationRepo.deleteById(id);
+    boolean deleteServiceRecord(int id) {
+        reservationRepo.deleteById((long) id);
         if (getServiceRecordById(id) == null) {
             return true;
         }

@@ -12,6 +12,15 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
     @GetMapping("/serviceRecords")
     public String getAllServiceRecords(Model model, @ModelAttribute("message") String message) {
         model.addAttribute("serviceRecords", reservationService.getAllServiceRecords());
@@ -36,7 +45,7 @@ public class ReservationController {
 
     }
     @DeleteMapping("/deleteServiceRecord/{id}")
-       public String deleteServiceRecord(@PathVariable long id, RedirectAttributes redirectAttributes) {
+       public String deleteServiceRecord(@PathVariable int id, RedirectAttributes redirectAttributes) {
             if (reservationService.deleteServiceRecord(id)) {
                 return "redirect:/serviceRecords?message=Service Record Deleted Successfully";
             }
