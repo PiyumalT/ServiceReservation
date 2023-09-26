@@ -36,20 +36,35 @@ public class ReservationController {
 
     @PostMapping("/AddReservations")
     public String addServiceRecord(@ModelAttribute("reservation") Reservation reservation, RedirectAttributes redirectAttributes) {
-        if (reservationService.addServiceRecord(reservation)) {
-            return "redirect:/view-reservation-details?message=Service Record Added Successfully";
+        int NewReservationId = reservationService.addServiceRecord(reservation);
+        if (NewReservationId != 0) {
+//            return "redirect://view-reservation-details/?message=Service Record Added Successfully";
+            return "redirect:/view-reservation-details/" + NewReservationId + "?new=true";
         }
         else{
-            return "redirect:/AddReservations?message=Service Record Not Added";
+            return "redirect:/AddReservations?failed=true";
         }
     }
+//
+//    @GetMapping("/view-reservation-details")
+//    public String viewReservationDetails(Model model, @ModelAttribute("message") String message) {
+//        model.addAttribute("reservationDetails", reservationService.getServiceRecordById(352));
+//        model.addAttribute("message", message);
+//        return "view-reservation-details";
+//    }
 
-    @GetMapping("/view-reservation-details")
-    public String viewReservationDetails(Model model, @ModelAttribute("message") String message) {
-        model.addAttribute("serviceRecords", reservationService.getAllServiceRecords());
+    @GetMapping("/view-reservation-details/{reservationId}")
+    public String viewReservationDetails(@PathVariable int reservationId, Model model, @ModelAttribute("message") String message) {
+        // Assuming you have a service method to retrieve the reservation details by ID
+        Reservation reservationDetails = reservationService.getServiceRecordById(Math.toIntExact(reservationId));
+
+        // Add the reservationDetails and message attributes to the model
+        model.addAttribute("reservationDetails", reservationDetails);
         model.addAttribute("message", message);
+
         return "view-reservation-details";
     }
+
 
     @DeleteMapping("/deleteServiceRecord/{id}")
        public String deleteServiceRecord(@PathVariable int id, RedirectAttributes redirectAttributes) {

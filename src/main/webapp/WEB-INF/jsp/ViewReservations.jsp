@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,43 +35,61 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    <c:forEach items="${serviceRecords}" var="reservation">
+                        <tr>
+                            <td>${reservation.date}</td>
+                            <td>${reservation.time}</td>
+                            <td>${reservation.location}</td>
+                            <td>${reservation.vehicle_no}</td>
+                            <td>${reservation.mileage}</td>
+                            <td>${reservation.message}</td>
+                            <td>
+                                <a href="view-reservation-details/${reservation.id}" class="btn btn-info btn-sm">View More</a>
+                                <a href="#" class="btn btn-danger btn-sm">Cancel</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+
+
                     <!-- Add reservation rows dynamically here -->
-                    <tr>
-                        <td>2023-09-30</td>
-                        <td>10 AM</td>
-                        <td>District 1</td>
-                        <td>ABC 123</td>
-                        <td>50000 miles</td>
-                        <td>Additional notes</td>
-                        <td>
-                            <a href="view-reservation-details.jsp" class="btn btn-info btn-sm">View More</a>
-                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2023-09-31</td>
-                        <td>10 AM</td>
-                        <td>District 2</td>
-                        <td>ABC 123</td>
-                        <td>50000 miles</td>
-                        <td>Additional notes</td>
-                        <td>
-                            <a href="view-reservation-details.jsp" class="btn btn-info btn-sm">View More</a>
-                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2023-09-30</td>
-                        <td>10 AM</td>
-                        <td>District 1</td>
-                        <td>ABC 123</td>
-                        <td>50000 miles</td>
-                        <td>Additional notes</td>
-                        <td>
-                            <a href="view-reservation-details.jsp?id=1" class="btn btn-info btn-sm">View More</a>
-                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>
-                        </td>
-                    </tr>
+<%--                    <tr>--%>
+<%--                        <td>2023-09-30</td>--%>
+<%--                        <td>10 AM</td>--%>
+<%--                        <td>District 1</td>--%>
+<%--                        <td>ABC 123</td>--%>
+<%--                        <td>50000 miles</td>--%>
+<%--                        <td>Additional notes</td>--%>
+<%--                        <td>--%>
+<%--                            <a href="view-reservation-details.jsp" class="btn btn-info btn-sm">View More</a>--%>
+<%--                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td>2023-09-31</td>--%>
+<%--                        <td>10 AM</td>--%>
+<%--                        <td>District 2</td>--%>
+<%--                        <td>ABC 123</td>--%>
+<%--                        <td>50000 miles</td>--%>
+<%--                        <td>Additional notes</td>--%>
+<%--                        <td>--%>
+<%--                            <a href="view-reservation-details.jsp" class="btn btn-info btn-sm">View More</a>--%>
+<%--                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td>2023-09-30</td>--%>
+<%--                        <td>10 AM</td>--%>
+<%--                        <td>District 1</td>--%>
+<%--                        <td>ABC 123</td>--%>
+<%--                        <td>50000 miles</td>--%>
+<%--                        <td>Additional notes</td>--%>
+<%--                        <td>--%>
+<%--                            <a href="view-reservation-details.jsp?id=1" class="btn btn-info btn-sm">View More</a>--%>
+<%--                            <a href="#" class="btn btn-danger btn-sm">Cancel</a>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
                     <!-- Add more reservation rows as needed -->
                     </tbody>
                 </table>
