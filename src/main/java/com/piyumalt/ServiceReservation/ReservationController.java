@@ -35,14 +35,16 @@ public class ReservationController {
     }
 
     @PostMapping("/AddReservations")
-    public String addServiceRecord(@ModelAttribute("reservation") Reservation reservation, RedirectAttributes redirectAttributes) {
+    public String addServiceRecord(Model model, @ModelAttribute("reservation") Reservation reservation , RedirectAttributes redirectAttributes) {
         int NewReservationId = reservationService.addServiceRecord(reservation);
         if (NewReservationId != 0) {
 //            return "redirect://view-reservation-details/?message=Service Record Added Successfully";
-            return "redirect:/view-reservation-details/" + NewReservationId + "?new=true";
+            redirectAttributes.addFlashAttribute("message", "Added");
+            return "redirect:/view-reservation-details/" + NewReservationId;
         }
         else{
-            return "redirect:/AddReservations?failed=true";
+            redirectAttributes.addFlashAttribute("message", "Failed");
+            return "redirect:/AddReservations";
         }
     }
 //
@@ -54,26 +56,26 @@ public class ReservationController {
 //    }
 
     @GetMapping("/view-reservation-details/{reservationId}")
-    public String viewReservationDetails(@PathVariable int reservationId, Model model, @ModelAttribute("message") String message) {
+    public String viewReservationDetails(@PathVariable int reservationId, Model model){
         // Assuming you have a service method to retrieve the reservation details by ID
         Reservation reservationDetails = reservationService.getServiceRecordById(Math.toIntExact(reservationId));
 
         // Add the reservationDetails and message attributes to the model
         model.addAttribute("reservationDetails", reservationDetails);
-        model.addAttribute("message", message);
 
         return "view-reservation-details";
     }
 
 
-    @DeleteMapping("/deleteServiceRecord/{id}")
+    @GetMapping("/deleteServiceRecord/{id}")
        public String deleteServiceRecord(@PathVariable int id, RedirectAttributes redirectAttributes) {
             if (reservationService.deleteServiceRecord(id)) {
-                return "redirect:/serviceRecords?message=Service Record Deleted Successfully";
+                redirectAttributes.addFlashAttribute("message", "Deleted");
             }
             else{
-                return "redirect:/serviceRecords?message=Service Record Not Deleted";
+                redirectAttributes.addFlashAttribute("message", "Failed");
             }
-        }
+        return "redirect:/ViewReservations";
+    }
 }
 //need top add more

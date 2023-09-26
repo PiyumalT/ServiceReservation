@@ -17,23 +17,23 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home">SecureVehicleReserve</a>
+    <a class="navbar-brand" href="/home">SecureVehicleReserve</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="home">Home</a>
+                <a class="nav-link" href="/home">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view-profile">Profile</a>
+                <a class="nav-link" href="/view-profile">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ViewReservations">Bookings</a>
+                <a class="nav-link" href="/ViewReservations">Bookings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index">Login</a>
+                <a class="nav-link" href="/">Login</a>
             </li>
         </ul>
     </div>

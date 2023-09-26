@@ -85,13 +85,27 @@
 
                 <!-- Add more rows as needed -->
                 <div class="text-center">
-                    <a href="ViewReservations" class="btn btn-primary btn-lg mt-3">Back to Reservations</a>
-                    <a href="view-reservations.jsp" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
+                    <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">Back to Reservations</a>
+                    <a href="/deleteServiceRecord/${reservationDetails.id}" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script th:inline="javascript">
+    window.onload = function() {
+
+        const msg = "${message}";
+
+        if (msg === "Added") {
+            alert(msg)
+        }
+    }
+</script>
+
+
+
 
 
 <!-- Include the footer -->

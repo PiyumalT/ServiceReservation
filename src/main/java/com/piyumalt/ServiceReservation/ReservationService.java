@@ -14,6 +14,7 @@ public class ReservationService {
     List<Reservation> getAllServiceRecords() {
         return reservationRepo.findAll();
     }
+
     public Reservation getServiceRecordById(int id) {
         return reservationRepo.findById((long) id).get();
     }
@@ -29,8 +30,11 @@ public class ReservationService {
     }
 
     boolean deleteServiceRecord(int id) {
+        if (reservationRepo.findById((long) id).isEmpty()) {
+            return false;
+        }
         reservationRepo.deleteById((long) id);
-        return getServiceRecordById(id) == null;
+        return reservationRepo.findById((long) id).isEmpty();
     }
 
 
