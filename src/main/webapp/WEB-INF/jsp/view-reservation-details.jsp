@@ -31,7 +31,7 @@
                         <strong>ID:</strong>
                     </div>
                     <div class="col-md-6">
-                        12345
+                        ${reservationDetails.id}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -39,7 +39,7 @@
                         <strong>Date:</strong>
                     </div>
                     <div class="col-md-6">
-                        2023-09-30
+                        ${reservationDetails.date}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -47,7 +47,7 @@
                         <strong>Time:</strong>
                     </div>
                     <div class="col-md-6">
-                        10 AM
+                        ${reservationDetails.time}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -55,7 +55,7 @@
                         <strong>Location:</strong>
                     </div>
                     <div class="col-md-6">
-                        District 1
+                        ${reservationDetails.location}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -63,7 +63,7 @@
                         <strong>Vehicle Num:</strong>
                     </div>
                     <div class="col-md-6">
-                        ABC 123
+                        ${reservationDetails.vehicle_no}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -71,7 +71,7 @@
                         <strong>Mileage:</strong>
                     </div>
                     <div class="col-md-6">
-                        50000 miles
+                        ${reservationDetails.mileage}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -79,36 +79,13 @@
                         <strong>Message:</strong>
                     </div>
                     <div class="col-md-6">
-                        Additional notes
+                        ${reservationDetails.message}
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-md-6 text-md-right">
-                        <strong>Name:</strong>
-                    </div>
-                    <div class="col-md-6">
-                        John Doe
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6 text-md-right">
-                        <strong>Email:</strong>
-                    </div>
-                    <div class="col-md-6">
-                        johndoe@example.com
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6 text-md-right">
-                        <strong>Phone:</strong>
-                    </div>
-                    <div class="col-md-6">
-                        (123) 456-7890
-                    </div>
-                </div>
+
                 <!-- Add more rows as needed -->
                 <div class="text-center">
-                    <a href="view-reservations.jsp" class="btn btn-primary btn-lg mt-3">Back to Reservations</a>
+                    <a href="ViewReservations" class="btn btn-primary btn-lg mt-3">Back to Reservations</a>
                     <a href="view-reservations.jsp" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
                 </div>
             </div>

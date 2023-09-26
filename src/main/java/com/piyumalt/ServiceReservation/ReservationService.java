@@ -18,24 +18,19 @@ public class ReservationService {
         return reservationRepo.findById((long) id).get();
     }
 
-    boolean addServiceRecord(Reservation reservation) {
+    int addServiceRecord(Reservation reservation) {
         Reservation newReservation = reservationRepo.save(reservation);
         if (getServiceRecordById((int) newReservation.getId()) != null) {
-            return true;
+            return (int) newReservation.getId();
         }
         else{
-            return false;
+            return 0;
         }
     }
 
     boolean deleteServiceRecord(int id) {
         reservationRepo.deleteById((long) id);
-        if (getServiceRecordById(id) == null) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return getServiceRecordById(id) == null;
     }
 
 
