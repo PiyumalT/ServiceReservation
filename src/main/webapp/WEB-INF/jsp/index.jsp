@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,6 @@
 </head>
 <body>
 <!-- Include the header -->
-
 <jsp:include page="header.jsp" />
 <!-- Main content - Login Box -->
 <div class="container mt-5">
@@ -20,7 +20,7 @@
                 <!-- Add your login form here -->
                 <h2>Login</h2>
                 <p>Log in using a third-party authentication service:</p>
-                <img src="/./src/main/webapp/WEB-INF/resources/login.png" width="225" height="225" alt="Login img">
+                <img src="<c:url value="/resources/img/login.png" />" width="100" height="100" alt="Login img">
                 <a href="home" class="btn btn-primary btn-lg btn-block mt-5">Login with Third-Party Service</a>
             </div>
             <!-- Error Message Div -->

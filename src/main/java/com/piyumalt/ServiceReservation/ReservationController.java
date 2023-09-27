@@ -27,6 +27,13 @@ public class ReservationController {
         model.addAttribute("message", message);
         return "ViewReservations";
     }
+//    futureReservations
+    @GetMapping("/futureReservations")
+    public String getFutureServiceRecords(Model model, @ModelAttribute("message") String message) {
+        model.addAttribute("serviceRecords", reservationService.getFutureServiceRecords());
+        model.addAttribute("message", message);
+        return "comingReservations";
+    }
 
     @GetMapping("/AddReservations")
     public String addServiceRecord(Model model) {

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +8,7 @@
     <title>Reservation Details</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="<c:url value="/resources/notify/notify.css" />" rel="stylesheet">
     <style>
         .col-md-6{
             padding-left: 5px !important;
@@ -85,13 +87,21 @@
 
                 <!-- Add more rows as needed -->
                 <div class="text-center">
-                    <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">Back to Reservations</a>
-                    <a href="/deleteServiceRecord/${reservationDetails.id}" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
+                    <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
+                    <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div id="custom-notify" class="custom-notify">
+    <span id="notify-message" class="notify-message"></span>
+    <button id="close-notify" class="close-notify" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<script src="<c:url value="/resources/notify/notify.js" />"></script>
 
 <script th:inline="javascript">
     window.onload = function() {
@@ -99,7 +109,17 @@
         const msg = "${message}";
 
         if (msg === "Added") {
-            alert(msg)
+            showNotify("New reservation added successfully", "success");
+        }
+    }
+</script>
+
+<script>
+    function confirmDelete(reservationId) {
+        const confirmation = confirm("Are you sure you want to cancel this reservation?");
+        if (confirmation) {
+            // If the user confirms, navigate to the delete URL
+            window.location.href = `/deleteServiceRecord/`+reservationId;
         }
     }
 </script>

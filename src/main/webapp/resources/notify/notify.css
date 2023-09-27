@@ -1,0 +1,35 @@
+/* CSS Styles */
+.custom-notify {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow */
+    padding: 10px;
+    max-width: 300px; /* Adjust width as needed */
+    cursor: pointer; /* Add cursor pointer */
+    transition: opacity 0.5s ease;
+}
+
+.notify-message {
+    margin-right: 25px;
+}
+
+.close-notify {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: bolder;
+}
