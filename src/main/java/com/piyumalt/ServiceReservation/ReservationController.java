@@ -2,6 +2,7 @@ package com.piyumalt.ServiceReservation;
 
 import com.piyumalt.ServiceReservation.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,16 +10,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ReservationController {
+
     @Autowired
-    private ReservationService reservationService;
+    ReservationService reservationService;
 
     @GetMapping("/")
     public String index() {
         return "index";
     }
+
     @GetMapping("/home")
-    public String home() {
+    public String home(OAuth2AuthenticationToken authenticationToken, Model model) {
+        String name = (String) authenticationToken.getPrincipal().getAttributes().get("name");
+        if (name == null) {
+            name =  "User";
+        }
+        model.addAttribute("name", name);
         return "home";
+    }
+    @GetMapping("/view-profile")
+    public String profile(OAuth2AuthenticationToken authenticationToken, Model model) {
+        String name = (String) authenticationToken.getPrincipal().getAttributes().get("name");
+        if (name == null) {
+            name =  "User";
+        }
+        model.addAttribute("name", name);
+        return "view-profile";
     }
 
     @GetMapping("/ViewReservations")
@@ -28,12 +45,12 @@ public class ReservationController {
         return "ViewReservations";
     }
 //    futureReservations
-    @GetMapping("/futureReservations")
-    public String getFutureServiceRecords(Model model, @ModelAttribute("message") String message) {
-        model.addAttribute("serviceRecords", reservationService.getFutureServiceRecords());
-        model.addAttribute("message", message);
-        return "comingReservations";
-    }
+//    @GetMapping("/futureReservations")
+//    public String getFutureServiceRecords(Model model, @ModelAttribute("message") String message) {
+//        model.addAttribute("serviceRecords", reservationService.getFutureServiceRecords());
+//        model.addAttribute("message", message);
+//        return "comingReservations";
+//    }
 
     @GetMapping("/AddReservations")
     public String addServiceRecord(Model model) {
@@ -75,7 +92,7 @@ public class ReservationController {
 
 
     @GetMapping("/deleteServiceRecord/{id}")
-       public String deleteServiceRecord(@PathVariable int id, RedirectAttributes redirectAttributes) {
+       public String deleteServiceRecord(@PathVariable long id, RedirectAttributes redirectAttributes) {
             if (reservationService.deleteServiceRecord(id)) {
                 redirectAttributes.addFlashAttribute("message", "Deleted");
             }

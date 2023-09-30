@@ -12,22 +12,6 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepo extends JpaRepository<Reservation, Long> {
-    // Future reservations
-    @Query("SELECT r FROM Reservation r WHERE r.date > :currentDateAsString AND r.username = :username")
-    List<Reservation> findFutureReservations(
-            @Param("currentDateAsString") String currentDateAsString,
-            @Param("username") String username
-    );
-
-    // Past reservations and current day reservations
-    @Query("SELECT r FROM Reservation r WHERE r.date <= :currentDateAsString AND r.username = :username")
-    List<Reservation> findPastReservations(
-            @Param("currentDateAsString") String currentDateAsString,
-            @Param("username") String username
-    );
-
-    @Query("SELECT r FROM Reservation r WHERE r.username = :username")
-    List<Reservation> findReservationsByUsername(@Param("username") String username);
 }
 
 

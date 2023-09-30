@@ -1,14 +1,16 @@
 package com.piyumalt.ServiceReservation;
 
 import com.piyumalt.ServiceReservation.model.Reservation;
+import com.piyumalt.ServiceReservation.ReservationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ReservationService {
+
     @Autowired
     ReservationRepo reservationRepo;
 
@@ -16,17 +18,17 @@ public class ReservationService {
         return reservationRepo.findAll();
     }
 
-    public List<Reservation> getFutureServiceRecords() {
-        // Get the current date
-        String currentDateAsString = LocalDate.now().toString();
-        System.out.println("Current Date: " + currentDateAsString);
-        List<Reservation> futureReservations = reservationRepo.findFutureReservations(currentDateAsString, "piyumal");
+//    public List<Reservation> getFutureServiceRecords() {
+//        // Get the current date
+//        String currentDateAsString = LocalDate.now().toString();
+//        System.out.println("Current Date: " + currentDateAsString);
+//        List<Reservation> futureReservations = reservationRepo.findFutureReservations(currentDateAsString, "piyumal");
+//
+//        return futureReservations;
+//    }
 
-        return futureReservations;
-    }
-
-    public Reservation getServiceRecordById(int id) {
-        return reservationRepo.findById((long) id).get();
+    public Reservation getServiceRecordById(long id) {
+        return reservationRepo.findById(id).get();
     }
 
     int addServiceRecord(Reservation reservation) {
@@ -39,7 +41,7 @@ public class ReservationService {
         }
     }
 
-    boolean deleteServiceRecord(int id) {
+    boolean deleteServiceRecord(long id) {
         if (reservationRepo.findById((long) id).isEmpty()) {
             return false;
         }
