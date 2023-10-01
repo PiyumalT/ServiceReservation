@@ -77,6 +77,8 @@
 <script src="<c:url value="/resources/js/newReservationInputs.js" />"></script>
 
 
+
+
 <div id="custom-notify" class="custom-notify">
     <span id="notify-message" class="notify-message"></span>
     <button id="close-notify" class="close-notify" aria-label="Close">
