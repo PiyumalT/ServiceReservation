@@ -85,6 +85,9 @@
         else if (msg === "Reservation not found"){
             showNotify("Reservation not found", "error");
         }
+        else if (msg === "Reservation not found"){
+            showNotify("Reservation not found", "error");
+        }
     }
 </script>
 
