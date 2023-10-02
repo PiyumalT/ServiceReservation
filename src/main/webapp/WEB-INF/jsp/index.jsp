@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- Include the header -->
-<jsp:include page="header.jsp" />
+<jsp:include page="navBar_login.jsp" />
 <!-- Main content - Login Box -->
 <div class="container mt-5">
     <div class="row justify-content-center">

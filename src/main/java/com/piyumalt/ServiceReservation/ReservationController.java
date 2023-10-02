@@ -71,8 +71,6 @@ public class ReservationController {
         return "AddReservations";
     }
 
-
-
     @GetMapping("/AddReservation")
     public String addServiceRecord(Model model, @ModelAttribute("reservation") Reservation reservation , RedirectAttributes redirectAttributes, OAuth2AuthenticationToken authenticationToken) {
         long NewReservationId = reservationService.addServiceRecord(reservation , authenticationToken);

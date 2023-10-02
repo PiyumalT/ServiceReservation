@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- Include the header -->
-<%@ include file="header.jsp" %>
+<%@ include file="navBar.jsp" %>
 
 <!-- Main content - Home Page -->
 <div class="container mt-5">

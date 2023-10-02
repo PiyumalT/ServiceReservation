@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- Include the header -->
-<%@ include file="header.jsp" %>
+<%@ include file="navBar.jsp" %>
 
 <!-- Main content - View Reservations -->
 <div class="container mt-5">

@@ -15,7 +15,7 @@
 </head>
 <body>
 <!-- Include the header -->
-<%@ include file="header.jsp" %>
+<%@ include file="navBar.jsp" %>
 
 <!-- Main content - Make Reservation -->
 <div class="container mt-5">
@@ -65,6 +65,7 @@
                     <div id="submitError" style="color: red; font-weight: bold;" class="my-3 mx-3"></div>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary btn-lg" onclick="validateForm()">Submit Reservation</button>
+                        <a href="/home" class="btn btn-danger btn-lg mx-3">Cancel</a>
                     </div>
                 </form>
             </div>
