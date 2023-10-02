@@ -24,7 +24,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="border rounded p-4">
-                <h2 class="text-center">View Reservations</h2>
+                <h2 class="text-center">Upcoming Reservations</h2>
                 <!-- Reservation table -->
                 <table class="table table-striped">
                     <thead>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -19,19 +20,44 @@ public class ReservationService {
     @Autowired
     ReservationRepo reservationRepo;
 
-    List<Reservation> getAllServiceRecords(OAuth2AuthenticationToken authentication) {
-        String username = getUsernameFromToken(authentication) ;
-        return reservationRepo.findByUsername(username);
+//    List<Reservation> getAllServiceRecords(OAuth2AuthenticationToken authentication) {
+//        String username = getUsernameFromToken(authentication);
+//        List<Reservation> reservations = reservationRepo.findByUsername(username);
+//
+//        // Sort reservations by ID in descending order
+//        List<Reservation> sortedReservations = reservations.stream()
+//                .sorted((r1, r2) -> Long.compare(r2.getId(), r1.getId()))
+//                .collect(Collectors.toList());
+//
+//        return sortedReservations;
+//    }
+
+
+    List<Reservation> getFutureServiceRecords(OAuth2AuthenticationToken authentication) {
+        String username = getUsernameFromToken(authentication);
+        LocalDate currentDate = LocalDate.now();
+
+        List<Reservation> reservations = reservationRepo.findByUsername(username);
+
+        // Filter reservations where date is after the current date
+
+        return reservations.stream()
+                .filter(reservation -> LocalDate.parse(reservation.getDate()).compareTo(currentDate) > 0)
+                .collect(Collectors.toList());
     }
 
-//    public List<Reservation> getFutureServiceRecords() {
-//        // Get the current date
-//        String currentDateAsString = LocalDate.now().toString();
-//        System.out.println("Current Date: " + currentDateAsString);
-//        List<Reservation> futureReservations = reservationRepo.findFutureReservations(currentDateAsString, "piyumal");
-//
-//        return futureReservations;
-//    }
+    List<Reservation> getPastServiceRecords(OAuth2AuthenticationToken authentication) {
+        String username = getUsernameFromToken(authentication);
+        LocalDate currentDate = LocalDate.now();
+
+        List<Reservation> reservations = reservationRepo.findByUsername(username);
+
+        // Filter reservations where date is before or equal to the current date
+
+        return reservations.stream()
+                .filter(reservation -> LocalDate.parse(reservation.getDate()).compareTo(currentDate) <= 0)
+                .collect(Collectors.toList());
+    }
 
     public Reservation getServiceRecordById(long id, OAuth2AuthenticationToken authentication) {
         Optional<Reservation> optionalReservation = reservationRepo.findById(id);
@@ -89,23 +115,32 @@ public class ReservationService {
         if (optionalReservation.isPresent()) {
             Reservation reservation = optionalReservation.get();
 
-            // Check if the reservation's username matches the token username
-            if (reservation.getUsername().equals(username)) {
+            // Get today's date
+            LocalDate currentDate = LocalDate.now();
+            LocalDate reservationDate = LocalDate.parse(reservation.getDate());
+
+            // Check if the reservation's date is in the future
+            if (reservation.getUsername().equals(username) && reservationDate.compareTo(currentDate) > 0) {
                 reservationRepo.deleteById(id);
 
                 // Check if the reservation is deleted successfully
                 return reservationRepo.findById(id).isEmpty();
-            } else {
+            } else if (!reservation.getUsername().equals(username)) {
                 // Unauthorized access: Reservation username doesn't match token username
-                System.out.println("Unauthorized access detected. User"+username+" attempted to delete reservation with ID: " + id);
+                System.out.println("Unauthorized access detected. User " + username + " attempted to delete reservation with ID: " + id);
+                return false;
+            } else {
+                // Attempted to delete a past reservation
+                System.out.println("Unauthorized access detected. User " + username + " attempted to delete past reservation with ID: " + id);
                 return false;
             }
         } else {
             // Reservation with the given ID not found
-            System.out.println("Unauthorized access detected. User"+username+" attempted to delete not exist reservation with ID: " + id);
+            System.out.println("Unauthorized access detected. User " + username + " attempted to delete non-existent reservation with ID: " + id);
             return false;
         }
     }
+
 
 
     private boolean isValidReservation(Reservation reservation) {

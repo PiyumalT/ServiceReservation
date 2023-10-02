@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
 
-                    <c:forEach items="${serviceRecords}" var="reservation">
+                    <c:forEach items="${futureServiceRecords}" var="reservation">
                         <tr>
                             <td>${reservation.date}</td>
                             <td>${reservation.time}</td>
@@ -54,7 +54,19 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    <!-- Add more reservation rows as needed -->
+                    <c:forEach items="${pastServiceRecords}" var="reservation">
+                        <tr>
+                            <td>${reservation.date}</td>
+                            <td>${reservation.time}</td>
+                            <td>${reservation.location}</td>
+                            <td>${reservation.vehicle_no}</td>
+                            <td>${reservation.mileage}</td>
+                            <td style="max-width: 17rem;">${reservation.message}</td>
+                            <td>
+                                <a href="view-reservation-details/${reservation.id}" class="btn btn-info btn-sm">View More</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

@@ -85,7 +85,6 @@
                     </div>
                 </div>
 
-                <!-- Add more rows as needed -->
                 <div class="text-center">
                     <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
                     <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>

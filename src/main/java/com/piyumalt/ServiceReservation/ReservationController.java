@@ -52,41 +52,25 @@ public class ReservationController {
 
     @GetMapping("/ViewReservations")
     public String getAllServiceRecords(Model model, @ModelAttribute("message") String message, OAuth2AuthenticationToken authenticationToken) {
-        model.addAttribute("serviceRecords", reservationService.getAllServiceRecords(authenticationToken));
+        model.addAttribute("pastServiceRecords", reservationService.getPastServiceRecords(authenticationToken));
+        model.addAttribute("futureServiceRecords", reservationService.getFutureServiceRecords(authenticationToken));
         model.addAttribute("message", message);
         return "ViewReservations";
     }
 //    futureReservations
-//    @GetMapping("/futureReservations")
-//    public String getFutureServiceRecords(Model model, @ModelAttribute("message") String message) {
-//        model.addAttribute("serviceRecords", reservationService.getFutureServiceRecords());
-//        model.addAttribute("message", message);
-//        return "comingReservations";
-//    }
+    @GetMapping("/futureReservations")
+    public String getFutureServiceRecords(Model model, @ModelAttribute("message") String message, OAuth2AuthenticationToken authenticationToken) {
+        model.addAttribute("serviceRecords", reservationService.getFutureServiceRecords(authenticationToken));
+        model.addAttribute("message", message);
+        return "comingReservations";
+    }
 
     @GetMapping("/AddReservations")
     public String addServiceRecord(Model model) {
         model.addAttribute("reservation", new Reservation());
         return "AddReservations";
     }
-// test
-//    @PostMapping("/AddReservation")
-//    public String addServiceRecord() {
-//        System.out.println("reservationxc");
-//        return "AddReservations";
-//    }
-//    @GetMapping("/AddReservation")
-//    public String addresc(@RequestBody String search) {
-//        System.out.println("rafas");
-//        System.out.println(search);
-//        return "AddReservations";
-//    }
 
-//    @GetMapping("/aaa")
-//    public String aaa(Model model,Reservation reservation , RedirectAttributes redirectAttributes) {
-//        System.out.println("aaa");
-//        return "redirect:/AddReservations";
-//    }
 
 
     @GetMapping("/AddReservation")
@@ -101,13 +85,6 @@ public class ReservationController {
             return "redirect:/AddReservations";
         }
     }
-//
-//    @GetMapping("/view-reservation-details")
-//    public String viewReservationDetails(Model model, @ModelAttribute("message") String message) {
-//        model.addAttribute("reservationDetails", reservationService.getServiceRecordById(352));
-//        model.addAttribute("message", message);
-//        return "view-reservation-details";
-//    }
 
     @GetMapping("/view-reservation-details/{reservationId}")
     public String viewReservationDetails(@PathVariable int reservationId, Model model, RedirectAttributes redirectAttributes, OAuth2AuthenticationToken authenticationToken){
@@ -136,4 +113,3 @@ public class ReservationController {
         return "redirect:/ViewReservations";
     }
 }
-//need top add more
