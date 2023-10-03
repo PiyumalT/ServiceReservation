@@ -1,5 +1,6 @@
-package com.piyumalt.ServiceReservation;
+package com.piyumalt.ServiceReservation.controller;
 
+import com.piyumalt.ServiceReservation.service.ReservationService;
 import com.piyumalt.ServiceReservation.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -30,23 +31,23 @@ public class ReservationController {
         return "home";
     }
 
-    @GetMapping("/view-profile")
-    public String profile(OAuth2AuthenticationToken authenticationToken, Model model) {
-        String username = (String) authenticationToken.getPrincipal().getAttributes().get("preferred_username");
-        String name = (String) authenticationToken.getPrincipal().getAttributes().get("name");
-        String email = (String) authenticationToken.getPrincipal().getAttributes().get("email");
-        String phoneNumber = (String) authenticationToken.getPrincipal().getAttributes().get("phone_number");
-        String country= (String) authenticationToken.getPrincipal().getAttributes().get("country");
-
-        // Add attributes to the model
-        model.addAttribute("username", username);
-        model.addAttribute("name", name);
-        model.addAttribute("email", email);
-        model.addAttribute("phoneNumber", phoneNumber);
-        model.addAttribute("country", country);
-
-        return "view-profile";
-    }
+//    @GetMapping("/view-profile")
+//    public String profile(OAuth2AuthenticationToken authenticationToken, Model model) {
+//        String username = (String) authenticationToken.getPrincipal().getAttributes().get("preferred_username");
+//        String name = (String) authenticationToken.getPrincipal().getAttributes().get("name");
+//        String email = (String) authenticationToken.getPrincipal().getAttributes().get("email");
+//        String phoneNumber = (String) authenticationToken.getPrincipal().getAttributes().get("phone_number");
+//        String country= (String) authenticationToken.getPrincipal().getAttributes().get("country");
+//
+//        // Add attributes to the model
+//        model.addAttribute("username", username);
+//        model.addAttribute("name", name);
+//        model.addAttribute("email", email);
+//        model.addAttribute("phoneNumber", phoneNumber);
+//        model.addAttribute("country", country);
+//
+//        return "view-profile";
+//    }
 
 
 

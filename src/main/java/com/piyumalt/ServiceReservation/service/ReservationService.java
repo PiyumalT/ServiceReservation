@@ -1,9 +1,8 @@
-package com.piyumalt.ServiceReservation;
+package com.piyumalt.ServiceReservation.service;
 
 import com.piyumalt.ServiceReservation.model.Reservation;
-import com.piyumalt.ServiceReservation.ReservationRepo;
+import com.piyumalt.ServiceReservation.repo.ReservationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +32,7 @@ public class ReservationService {
 //    }
 
 
-    List<Reservation> getFutureServiceRecords(OAuth2AuthenticationToken authentication) {
+    public List<Reservation> getFutureServiceRecords(OAuth2AuthenticationToken authentication) {
         String username = getUsernameFromToken(authentication);
         LocalDate currentDate = LocalDate.now();
 
@@ -46,7 +45,7 @@ public class ReservationService {
                 .collect(Collectors.toList());
     }
 
-    List<Reservation> getPastServiceRecords(OAuth2AuthenticationToken authentication) {
+    public List<Reservation> getPastServiceRecords(OAuth2AuthenticationToken authentication) {
         String username = getUsernameFromToken(authentication);
         LocalDate currentDate = LocalDate.now();
 
@@ -107,7 +106,7 @@ public class ReservationService {
     }
 
 
-    boolean deleteServiceRecord(long id, OAuth2AuthenticationToken authentication) {
+    public boolean deleteServiceRecord(long id, OAuth2AuthenticationToken authentication) {
         String username = getUsernameFromToken(authentication);
 
         Optional<Reservation> optionalReservation = reservationRepo.findById(id);

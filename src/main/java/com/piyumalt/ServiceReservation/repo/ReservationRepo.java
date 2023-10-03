@@ -1,4 +1,4 @@
-package com.piyumalt.ServiceReservation;
+package com.piyumalt.ServiceReservation.repo;
 
 import com.piyumalt.ServiceReservation.model.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;

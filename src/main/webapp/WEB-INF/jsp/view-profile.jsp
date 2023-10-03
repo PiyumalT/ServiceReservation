@@ -28,7 +28,7 @@
                         <strong>Username:</strong>
                     </div>
                     <div class="col-md-6 text-md-left">
-                        ${username}
+                        ${userProfile.username}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -36,7 +36,7 @@
                         <strong>Name:</strong>
                     </div>
                     <div class="col-md-6 text-md-left">
-                        ${name}
+                        ${userProfile.name}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -44,7 +44,7 @@
                         <strong>Email:</strong>
                     </div>
                     <div class="col-md-6 text-md-left">
-                        ${email}
+                        ${userProfile.email}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -52,7 +52,7 @@
                         <strong>Contact Number:</strong>
                     </div>
                     <div class="col-md-6 text-md-left">
-                        ${phoneNumber}
+                        ${userProfile.phoneNumber}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -60,7 +60,7 @@
                         <strong>Country:</strong>
                     </div>
                     <div class="col-md-6 text-md-left">
-                        ${country}
+                        ${userProfile.country}
                     </div>
                 </div>
 
