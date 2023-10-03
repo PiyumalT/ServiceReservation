@@ -36,19 +36,20 @@
                     </div>
                     <div class="form-group">
                         <label for="time">Preferred Time</label>
-                        <select class="form-control" path="time" id="time" name="time" required>
-                            <option value="10 AM">10 AM</option>
-                            <option value="11 AM">11 AM</option>
-                            <option value="12 PM">12 PM</option>
+                        <select class="form-control" id="time" name="time" required>
+                            <c:forEach var="time" items="${Times}">
+                                <option value="${time}">${time}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="location">Preferred Location</label>
-                        <select class="form-control" path="location" id="location" name="location" required>
-                            <option value="District 1">District 1</option>
-                            <option value="District 2">District 2</option>
-                            <!-- Add more options as needed -->
+                        <select class="form-control" id="location" name="location" required>
+                            <c:forEach var="location" items="${Locations}">
+                                <option value="${location}">${location}</option>
+                            </c:forEach>
                         </select>
+
                     </div>
                     <div class="form-group">
                         <label for="vehicle_no">Vehicle Registration Number</label>

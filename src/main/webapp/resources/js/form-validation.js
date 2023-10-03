@@ -29,21 +29,21 @@ function validateForm() {
         submitError.innerHTML += "Time is required.<br>";
         isValid = false;
     }
-    const validTimes = ["10 AM", "11 AM", "12 PM"];
-    if (!validTimes.includes(time)) {
-        submitError.innerHTML += "Please select a valid time (10 AM, 11 AM, or 12 PM).<br>";
-        isValid = false;
-    }
+    // const validTimes = ["10 AM", "11 AM", "12 PM"];
+    // if (!validTimes.includes(time)) {
+    //     submitError.innerHTML += "Please select a valid time (10 AM, 11 AM, or 12 PM).<br>";
+    //     isValid = false;
+    // }
 
     if (!location) {
         submitError.innerHTML += "Location is required.<br>";
         isValid = false;
     }
-    const validDistricts = ["District 1", "District 2"];
-    if (!validDistricts.includes(location)) {
-        submitError.innerHTML += "Please select a valid location (District 1, District 2, etc.).<br>";
-        isValid = false;
-    }
+    // const validDistricts = ["District 1", "District 2"];
+    // if (!validDistricts.includes(location)) {
+    //     submitError.innerHTML += "Please select a valid location (District 1, District 2, etc.).<br>";
+    //     isValid = false;
+    // }
 
     if (!vehicleNo) {
         submitError.innerHTML += "Vehicle Registration Number is required.<br>";

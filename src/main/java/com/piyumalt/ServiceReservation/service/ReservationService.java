@@ -143,11 +143,17 @@ public class ReservationService {
 
 
     private boolean isValidReservation(Reservation reservation) {
-        LocalDate today = LocalDate.now();
-        List<String> validTimes = Arrays.asList("10 AM", "11 AM", "12 PM");
-        List<String> validLocations = Arrays.asList("District 1", "District 2", "District 3");
+        List<String> validTimes = LocationAndTimeService.getTimes();
+        List<String> validLocations = LocationAndTimeService.getLocations();
 
         List<String> errors = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        LocalDate reservationDate = LocalDate.parse(reservation.getDate());
+
+        // Check if the reservation's date is in the future
+        if (currentDate.compareTo(reservationDate) > 0) {
+            errors.add("Reservation date must be in the future.");
+        }
 
         if (!validTimes.contains(reservation.getTime())) {
             errors.add("Reservation time must be 10 AM, 11 AM, or 12 PM.");

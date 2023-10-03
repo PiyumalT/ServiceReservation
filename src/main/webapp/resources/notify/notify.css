@@ -1,22 +1,23 @@
 /* CSS Styles */
 .custom-notify {
     position: fixed;
-    top: 20px;
+    top: 70px;
     right: 20px;
     z-index: 9999;
     display: none;
     border-radius: 5px;
     background-color: #333;
     color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow */
-    padding: 10px;
-    max-width: 300px; /* Adjust width as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow */
+    padding: 40px;
+    max-width: 500px; /* Adjust width as needed */
     cursor: pointer; /* Add cursor pointer */
     transition: opacity 0.5s ease;
 }
 
 .notify-message {
     margin-right: 25px;
+    font-size: large;
 }
 
 .close-notify {
