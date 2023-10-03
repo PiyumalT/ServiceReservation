@@ -17,15 +17,15 @@
             padding: 10px 0; /* Add some padding for spacing */
         }
     </style>
-    <title></title>
 </head>
 <body>
 
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-3 my-4">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p>&copy; 2023 <a href="https://www.github.com/piyumalt"> PiyumalT </a> </p>
+                <hr>
+                <p class="my-2">&copy; 2023 <a href="https://www.github.com/piyumalt"> PiyumalT </a> </p>
             </div>
         </div>
     </div>

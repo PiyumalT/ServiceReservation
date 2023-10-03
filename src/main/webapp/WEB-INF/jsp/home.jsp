@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <!-- Include Bootstrap CSS -->
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/icon.png' />">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -19,20 +19,20 @@
         <div class="col-md-8">
             <div class="border rounded p-4 text-center">
                 <h2>Welcome ${name}</h2>
-                <img src="<c:url value="/resources/img/home.png" />" width="100" height="100" alt="Login img">
+                <img src="<c:url value="/resources/img/home.png" />" width="100" height="100">
                 <p>What would you like to do?</p>
                 <div class="row justify-content-center"> <!-- Center align the buttons -->
                     <div class="col-md-5 mb-3">
-                        <a href="view-profile" class="btn btn-info btn-lg btn-block p-3">View Profile info</a>
+                        <a href="/view-profile" class="btn btn-info btn-lg btn-block p-3">View Profile info</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="AddReservations" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
+                        <a href="/AddReservations" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="ViewReservations" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
+                        <a href="/ViewReservations" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="futureReservations" class="btn btn-warning btn-lg btn-block p-3">Upcoming Reservations</a>
+                        <a href="/futureReservations" class="btn btn-warning btn-lg btn-block p-3">Upcoming Reservations</a>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/icon.png' />">
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -20,7 +21,7 @@
                 <!-- Add your login form here -->
                 <h2>Login</h2>
                 <p>Log in using a third-party authentication service:</p>
-                <img src="<c:url value="/resources/img/login.png" />" width="100" height="100" alt="Login img">
+                <img src="<c:url value="/resources/img/login.png" />" width="100" height="100">
                 <a href="home" class="btn btn-primary btn-lg btn-block mt-5">Login with Third-Party Service</a>
             </div>
             <!-- Error Message Div -->

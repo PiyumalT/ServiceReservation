@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Details</title>
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/icon.png' />">
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="<c:url value="/resources/notify/notify.css" />" rel="stylesheet">
@@ -27,6 +28,9 @@
         <div class="col-md-6">
             <div class="border rounded p-4">
                 <h2 class="text-center">Reservation Details</h2>
+                <div style="width: 100%" class="text-center">
+                    <img src="<c:url value="/resources/img/upcoming.png" />" width="60" height="60">
+                </div>
                 <!-- Display full details of the reservation here -->
                 <div class="row mb-3">
                     <div class="col-md-6 text-md-right">
@@ -87,12 +91,17 @@
 
                 <div class="text-center">
                     <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
-                    <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
+                    <c:choose>
+                        <c:when test="${not expired}">
+                            <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
+                        </c:when>
+                    </c:choose>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div id="custom-notify" class="custom-notify">
     <span id="notify-message" class="notify-message"></span>

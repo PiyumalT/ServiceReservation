@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Profile</title>
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/icon.png' />">
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -19,7 +20,7 @@
         <div class="col-md-6">
             <div class="border rounded p-4 text-center">
                 <h2 class="text-center">User Profile</h2>
-                <img src="<c:url value="/resources/img/profile.png" />" width="100" height="100" alt="Login img">
+                <img src="<c:url value="/resources/img/profile.png" />" width="100" height="100">
 
                 <!-- Display user profile information -->
                 <div class="row mb-3">

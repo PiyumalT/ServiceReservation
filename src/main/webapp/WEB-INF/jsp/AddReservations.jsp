@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Reservation</title>
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/icon.png' />">
+
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="<c:url value="/resources/notify/notify.css" />" rel="stylesheet">
@@ -22,7 +24,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="border rounded p-4">
-                <img src="<c:url value="/resources/img/new_reserve.png" />" width="100" height="100" alt="Login img" style="margin-left: 45%">
+                <img src="<c:url value="/resources/img/new_reserve.png" />" width="70" height="70" style="margin-left: 45%">
                 <h2 class="text-center">Make a Reservation</h2>
                 <!-- Reservation form -->
                 <form action="AddReservation" method="GET" modelAttribute="reservation" id="reservationForm" >

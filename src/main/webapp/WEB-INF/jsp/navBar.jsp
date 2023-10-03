@@ -8,16 +8,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Application Title</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home" style="font-style: italic; font-family: 'Arial', sans-serif;">Vehicle Service Reservation</a>
+    <a class="navbar-brand" href="/home" style="font-style: italic; font-family: 'Arial', sans-serif;">
+        <img src="<c:url value="/resources/img/icon.png" />" width="40" height="40">
+        Vehicle Service Reservation
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,7 +26,7 @@
                 <a class="nav-link" href="/view-profile">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ViewReservations">View </a>
+                <a class="nav-link" href="/ViewReservations">View-All </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/AddReservations">New </a>

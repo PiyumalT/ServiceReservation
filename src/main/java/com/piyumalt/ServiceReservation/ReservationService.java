@@ -182,4 +182,11 @@ public class ReservationService {
     }
 
 
+    public boolean isExpired(Reservation reservationDetails) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate reservationDate = LocalDate.parse(reservationDetails.getDate());
+
+        // Check if the reservation's date is in the future
+        return reservationDate.compareTo(currentDate) <= 0;
+    }
 }

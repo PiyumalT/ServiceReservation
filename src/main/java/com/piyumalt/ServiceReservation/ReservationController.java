@@ -95,6 +95,7 @@ public class ReservationController {
             return "redirect:/ViewReservations";
         }
         model.addAttribute("reservationDetails", reservationDetails);
+        model.addAttribute("expired",reservationService.isExpired(reservationDetails) );
 
         return "view-reservation-details";
     }
