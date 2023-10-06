@@ -49,7 +49,7 @@
 <h2>Usage</h2>
 <ol>
     <li>Clone the repository: <code>git clone https://github.com/PiyumalT/ServiceReservation.git</code></li>
-    <li>Navigate to the project directory: <code>cd your-project-directory</code></li>
+    <li>Navigate to the project directory: <code>cd ServiceReservation</code></li>
     <li>Run the application: <code>./mvnw spring-boot:run</code></li>
     <li>Access the application in your web browser: <code>http://localhost:8080</code>(You can change port if you want, modify port in <code>application.properties</code> </li>
 </ol>
