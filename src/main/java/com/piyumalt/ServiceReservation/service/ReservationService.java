@@ -123,7 +123,7 @@ public class ReservationService {
                 reservationRepo.deleteById(id);
 
                 // Check if the reservation is deleted successfully
-                return reservationRepo.findById(id).isEmpty();
+                return !(reservationRepo.findById(id).isPresent());
             } else if (!reservation.getUsername().equals(username)) {
                 // Unauthorized access: Reservation username doesn't match token username
                 System.out.println("Unauthorized access detected. User " + username + " attempted to delete reservation with ID: " + id);
@@ -172,7 +172,6 @@ public class ReservationService {
             }
             return false;
         }
-
         return true;
     }
 
@@ -181,7 +180,7 @@ public class ReservationService {
         String username = null;
         if (authenticationToken != null) {
             // Extract username from authentication token
-            username = (String) authenticationToken.getPrincipal().getAttributes().get("preferred_username");
+            username = (String) authenticationToken.getPrincipal().getAttributes().get("username");
         }
         return username;
     }

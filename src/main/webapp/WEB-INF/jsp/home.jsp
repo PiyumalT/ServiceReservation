@@ -23,16 +23,16 @@
                 <p>What would you like to do?</p>
                 <div class="row justify-content-center"> <!-- Center align the buttons -->
                     <div class="col-md-5 mb-3">
-                        <a href="/view-profile" class="btn btn-info btn-lg btn-block p-3">View Profile info</a>
+                        <a href="view-profile" class="btn btn-info btn-lg btn-block p-3">View Profile info</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="/AddReservations" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
+                        <a href="AddReservations" class="btn btn-success btn-lg btn-block p-3">Make a Reservation</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="/ViewReservations" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
+                        <a href="ViewReservations" class="btn btn-primary btn-lg btn-block p-3">View Reservations</a>
                     </div>
                     <div class="col-md-5 mb-3">
-                        <a href="/futureReservations" class="btn btn-warning btn-lg btn-block p-3">Upcoming Reservations</a>
+                        <a href="futureReservations" class="btn btn-warning btn-lg btn-block p-3">Upcoming Reservations</a>
                     </div>
                 </div>
             </div>

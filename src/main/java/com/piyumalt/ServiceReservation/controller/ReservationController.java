@@ -24,7 +24,6 @@ public class ReservationController {
 
     @GetMapping("/home")
     public String home(OAuth2AuthenticationToken authenticationToken, Model model) {
-//        System.out.println("Authentication token: " + authenticationToken);
         String name = (String) authenticationToken.getPrincipal().getAttributes().get("name");
         if (name == null) {
             name =  "User";

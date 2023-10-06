@@ -20,7 +20,7 @@ public class UserProfileController {
 
     @GetMapping("/view-profile")
     public String profile(OAuth2AuthenticationToken authenticationToken, Model model) {
-        System.out.println("Authentication token: " + authenticationToken);
+        //System.out.println("Authentication token: " + authenticationToken);
         UserProfile userProfile = userProfileService.getUserProfile(authenticationToken);
 
         // Add UserProfile object to the model
