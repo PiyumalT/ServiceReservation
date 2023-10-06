@@ -41,8 +41,14 @@
 
 <h2>Configuration</h2>
 <p>Configure authentication with Asgardeo Identity Provider in <code>application.properties</code>.<br>
-    Also, Configure database connection details if using MySQL.<br>
-    You can modify Reservation related data, such as Location and reservation time in <code>application.properties</code>
+You must add your <code>client-id</code> and <code>client-secret</code> in <code>application.properties</code>. You can get that from Asgardeo admin panel. Then
+Add Asgardeo registered Organization to <code>issuer-uri</code> in<code>application.properties</code>.<br>
+Remember to add <code>redirect-uri</code> in Asgardeo admin panel. <br>
+Remember to add <code>logout-uri</code> in Asgardeo admin panel. <br><br>
+Also, Configure database connection details.<br><br>
+You can modify Reservation related data, such as Location and reservation time in <code>application.properties</code>
+<br><br>
+Complete Guide: <a href="https://piyumalt.medium.com/vehicle-service-reservation-with-spring-boot-and-asgardeo-identity-provider-oidc-1e0b0b0b0b0b">https://piyumalt.medium.com/vehicle-service-reservation-with-spring-boot-and-asgardeo-identity-provider-oidc-1e0b0b0b0b0b</a>
 </p>
 
 
