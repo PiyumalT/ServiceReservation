@@ -37,7 +37,7 @@
                         <strong>ID:</strong>
                     </div>
                     <div class="col-md-6">
-                        ${reservationDetails.id}
+                        ${reservationDetails.booking_id}
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -93,7 +93,7 @@
                     <a href="${pageContext.request.contextPath}/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
                     <c:choose>
                         <c:when test="${not expired}">
-                            <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
+                            <a href="#" onclick="confirmDelete(${reservationDetails.booking_id })" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
                         </c:when>
                     </c:choose>
                 </div>

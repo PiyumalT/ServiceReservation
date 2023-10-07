@@ -1,6 +1,5 @@
 package com.piyumalt.ServiceReservation.model;
 
-import org.apache.logging.log4j.message.Message;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
@@ -10,8 +9,8 @@ import javax.persistence.*;
 @Table(name = " vehicle_service")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use GenerationType.IDENTITY for auto-incremented IDs
+    private long booking_id;
 
     @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,12 +41,12 @@ public class Reservation {
     public Reservation() {
     }
 
-    public long getId() {
-        return id;
+    public long getBooking_id() {
+        return booking_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBooking_id(int id) {
+        this.booking_id = id;
     }
 
     public String getDate() {

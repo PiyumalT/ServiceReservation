@@ -54,8 +54,8 @@
                                 <td>${reservation.mileage}</td>
                                 <td style="max-width: 17rem;">${reservation.message}</td>
                                 <td>
-                                    <a href="view-reservation-details/${reservation.id}" class="btn btn-info btn-sm">View More</a>
-                                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(${reservation.id})">Cancel Reservation</a>
+                                    <a href="view-reservation-details/${reservation.booking_id }" class="btn btn-info btn-sm">View More</a>
+                                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(${reservation.booking_id })">Cancel Reservation</a>
                                 </td>
                             </tr>
                         </c:forEach>
