@@ -60,6 +60,27 @@ Complete Guide: <a href="https://piyumalt.medium.com/vehicle-service-reservation
     <li>Access the application in your web browser: <code>http://localhost:8080</code>(You can change port if you want, modify port in <code>application.properties</code> </li>
 </ol>
 
+<p>You can change the port number or context path as per your Tomcat configuration.</p>
+
+
+<h2>Installation Guide</h2>
+<ol>
+    <li>Download the WAR file from the repository.</li>
+    <li>Copy the WAR file to your Tomcat's webapps directory. path/to/your/tomcat/webapps/</li>
+</ol>
+
+<ol start="3">
+    <li>Start your Tomcat server. You can use the following command:</li>
+</ol> <code>/tomcat/bin/catalina.bat run </code>
+
+<ol start="4">
+    <li>Access the application in your web browser using the following URL:</li>
+</ol>
+<code>http://localhost:8080/service-reservation</code>
+
+<p>You may need to config application.properties file. After the first run of application, goto webapp directory>service-reservation>WEB-INF>classes
+and follow the above config instructions to modify application.properties file. Then restart the application. </p>
+
 <h2>Additional Information</h2>
 <p>For more details and advanced usage, please refer to my Medium blog: <a href="https://piyumalt.medium.com/">https://piyumalt.medium.com/</a></p>
 
