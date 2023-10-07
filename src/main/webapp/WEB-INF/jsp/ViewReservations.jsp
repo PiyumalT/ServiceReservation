@@ -84,8 +84,8 @@
                     </div>
                 </c:if>
                     <div class="text-center">
-                        <a href="/home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
-                        <a href="/AddReservations" class="btn btn-success btn-lg mx-3">New Reservation</a>
+                        <a href="home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
+                        <a href="AddReservations" class="btn btn-success btn-lg mx-3">New Reservation</a>
                     </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
         const confirmation = confirm("Are you sure you want to cancel this reservation?");
         if (confirmation) {
             // If the user confirms, navigate to the delete URL
-            window.location.href = `/deleteServiceRecord/`+reservationId;
+            window.location.href = `deleteServiceRecord/`+reservationId;
         }
     }
 </script>

@@ -70,8 +70,8 @@
                     </div>
                 </c:if>
                     <div class="text-center">
-                        <a href="/home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
-                        <a href="/AddReservations" class="btn btn-success btn-lg mx-3">New Reservation</a>
+                        <a href="home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
+                        <a href="AddReservations" class="btn btn-success btn-lg mx-3">New Reservation</a>
                     </div>
 
             </div>

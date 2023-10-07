@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="text-center">
-                    <a href="/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
+                    <a href="${pageContext.request.contextPath}/ViewReservations" class="btn btn-primary btn-lg mt-3">View All Reservations</a>
                     <c:choose>
                         <c:when test="${not expired}">
                             <a href="#" onclick="confirmDelete(${reservationDetails.id})" class="btn btn-danger btn-lg mt-3">Cancel Reservation</a>
@@ -126,10 +126,11 @@
     function confirmDelete(reservationId) {
         const confirmation = confirm("Are you sure you want to cancel this reservation?");
         if (confirmation) {
-            // If the user confirms, navigate to the delete URL
-            window.location.href = `/deleteServiceRecord/`+reservationId;
+            // If the user confirms, navigate to the delete URL with the context path
+            window.location.href = `${pageContext.request.contextPath}/deleteServiceRecord/`+reservationId;
         }
     }
+
 </script>
 
 

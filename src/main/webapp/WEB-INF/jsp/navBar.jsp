@@ -10,7 +10,7 @@
 <html lang="en">
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home" style="font-style: italic; font-family: 'Arial', sans-serif;">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/home" style="font-style: italic; font-family: 'Arial', sans-serif;">
         <img src="<c:url value="/resources/img/icon.png" />" width="40" height="40">
         Vehicle Service Reservation
     </a>
@@ -20,22 +20,22 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/view-profile">Profile</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/view-profile">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ViewReservations">View-All </a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/ViewReservations">View-All </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/AddReservations">New </a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/AddReservations">New </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/futureReservations">Upcoming</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/futureReservations">Upcoming</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logout" style="color: #a80404;">Logout</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout" style="color: #a80404;">Logout</a>
             </li>
 
         </ul>

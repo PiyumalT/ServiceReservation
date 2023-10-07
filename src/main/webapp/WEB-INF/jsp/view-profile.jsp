@@ -67,7 +67,7 @@
                 <!-- Add more user profile information as needed -->
 
                 <div class="text-center mt-3">
-                    <a href="/home" class="btn btn-primary">Go Back</a>
+                    <a href="home" class="btn btn-primary">Go Back</a>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home" style="font-style: italic; font-family: 'Arial', sans-serif;">
+    <a class="navbar-brand" href="home" style="font-style: italic; font-family: 'Arial', sans-serif;">
         <img src="<c:url value="/resources/img/icon.png" />" width="40" height="40">
         Vehicle Service Reservation
     </a>
@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link btn btn-primary" href="/home">Login</a>
+                <a class="nav-link btn btn-primary" href="home">Login</a>
             </li>
         </ul>
     </div>

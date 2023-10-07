@@ -20,7 +20,7 @@
         <c:if test="${not empty errorMessage}">
             <p class="font-weight-bold">Error Message: ${errorMessage}</p>
         </c:if>
-        <a href="/home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
+        <a href="${pageContext.request.contextPath}/home" class="btn btn-primary btn-lg mx-3">Go to Home</a>
     </div>
 </div>
 <%@ include file="footer.jsp" %>
