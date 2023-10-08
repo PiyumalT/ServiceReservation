@@ -1,6 +1,5 @@
 package com.piyumalt.ServiceReservation.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
