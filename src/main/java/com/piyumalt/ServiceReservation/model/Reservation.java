@@ -4,6 +4,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Table(name = " vehicle_service")
@@ -13,12 +17,12 @@ public class Reservation {
     private long booking_id;
 
     @Column
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String date;
+    @NonNull
+    private Date date;
 
     @Column
     @NonNull
-    private String time;
+    private Time time;
 
     @Column
     @NonNull
@@ -36,6 +40,7 @@ public class Reservation {
     private String message;
 
     @Column
+    @NonNull
     private String username;
 
     public Reservation() {
@@ -45,25 +50,40 @@ public class Reservation {
         return booking_id;
     }
 
-    public void setBooking_id(int id) {
-        this.booking_id = id;
-    }
-
-    public String getDate() {
+    // Getter for date attribute returning as String
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public String getDateString() {
+        return String.valueOf(date);
+    }
+
+    public void setDate(Date date) {
         this.date = date;
     }
 
+
+
     public String getTime() {
-        return time;
+        if (time != null) {
+            return time.toString();
+        }
+        return null;
     }
 
     public void setTime(String time) {
-        this.time = time;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh a");
+            java.util.Date parsedDate = dateFormat.parse(time);
+            this.time = new Time(parsedDate.getTime());
+        } catch (ParseException e) {
+            // Handle the parsing exception if the provided time is not in the expected format
+            // You can throw an exception or handle it according to your requirements
+            e.printStackTrace(); // Example: Printing the error message to the console
+        }
     }
+
 
     public String getLocation() {
         return location;

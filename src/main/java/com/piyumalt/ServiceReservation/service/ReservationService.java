@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,7 @@ public class ReservationService {
         // Filter reservations where date is after the current date
 
         return reservations.stream()
-                .filter(reservation -> LocalDate.parse(reservation.getDate()).compareTo(currentDate) > 0)
+                .filter(reservation -> reservation.getDate().toLocalDate().compareTo(currentDate) > 0)
                 .collect(Collectors.toList());
     }
 
@@ -53,7 +55,7 @@ public class ReservationService {
         // Filter reservations where date is before or equal to the current date
 
         return reservations.stream()
-                .filter(reservation -> LocalDate.parse(reservation.getDate()).compareTo(currentDate) <= 0)
+                .filter(reservation -> reservation.getDate().toLocalDate().compareTo(currentDate) <= 0)
                 .collect(Collectors.toList());
     }
 
@@ -115,7 +117,7 @@ public class ReservationService {
 
             // Get today's date
             LocalDate currentDate = LocalDate.now();
-            LocalDate reservationDate = LocalDate.parse(reservation.getDate());
+            LocalDate reservationDate = reservation.getDate().toLocalDate();
 
             // Check if the reservation's date is in the future
             if (reservation.getUsername().equals(username) && reservationDate.compareTo(currentDate) > 0) {
@@ -142,26 +144,46 @@ public class ReservationService {
 
 
     private boolean isValidReservation(Reservation reservation) {
-        List<String> validTimes = LocationAndTimeService.getTimes();
+        List<Time> validTimes = LocationAndTimeService.convertToTimeList();// Get times as Time objects
+
+        List<String> validTimeStrings = new ArrayList<>();
+        for (Time validTime : validTimes) {
+            // Format Time objects to strings without seconds
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            String formattedTime = timeFormat.format(validTime);
+            validTimeStrings.add(formattedTime);
+        }
+
         List<String> validLocations = LocationAndTimeService.getLocations();
 
         List<String> errors = new ArrayList<>();
         LocalDate currentDate = LocalDate.now();
-        LocalDate reservationDate = LocalDate.parse(reservation.getDate());
+        LocalDate reservationDate = reservation.getDate().toLocalDate();
 
         // Check if the reservation's date is in the future
         if (currentDate.compareTo(reservationDate) > 0) {
             errors.add("Reservation date must be in the future.");
         }
 
-        if (!validTimes.contains(reservation.getTime())) {
-            errors.add("Reservation time must be 10 AM, 11 AM, or 12 PM.");
+        // Format reservation time to exclude seconds for comparison
+        String reservationTimeFormatted = reservation.getTime().substring(0, 5);
+
+        if (!validTimeStrings.contains(reservationTimeFormatted)) {
+            errors.add(reservation.getTime() + " is not a valid time.");
+            errors.add("Valid times are: " + validTimeStrings);
         }
+
         if (!validLocations.contains(reservation.getLocation())) {
             errors.add("Invalid location selected.");
         }
         if (reservation.getMileage() < 0) {
             errors.add("Mileage must be greater than 0.");
+        }
+
+        String vehicleNumber = reservation.getVehicle_no();
+        // Check vehicle number length
+        if (vehicleNumber.length() < 5 || vehicleNumber.length() > 10) {
+            errors.add("Vehicle number must be between 5 and 10 characters.");
         }
 
         if (!errors.isEmpty()) {
@@ -185,9 +207,9 @@ public class ReservationService {
     }
 
 
-    public boolean isExpired(Reservation reservationDetails) {
+    public boolean isExpired(Reservation reservation) {
         LocalDate currentDate = LocalDate.now();
-        LocalDate reservationDate = LocalDate.parse(reservationDetails.getDate());
+        LocalDate reservationDate = reservation.getDate().toLocalDate();
 
         // Check if the reservation's date is in the future
         return reservationDate.compareTo(currentDate) <= 0;

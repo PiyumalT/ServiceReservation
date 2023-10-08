@@ -53,6 +53,10 @@ function validateForm() {
         submitError.innerHTML += "Vehicle Registration Number not exceed 10 characters.<br>";
         isValid = false;
     }
+    if (vehicleNo.length < 5) {
+        submitError.innerHTML += "Vehicle Registration Number must be at least 5 characters.<br>";
+        isValid = false;
+    }
 
     if (!mileage) {
         submitError.innerHTML += "Mileage is required.<br>";
