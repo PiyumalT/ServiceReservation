@@ -6,10 +6,14 @@ function validateForm() {
     const mileage = document.getElementById("mileage").value;
     const message = document.getElementById("message").value;
 
+
+
     // Validation logic
     let isValid = true;
     const submitError = document.getElementById("submitError");
     submitError.innerHTML = ""; // Clear previous error messages
+
+    document.getElementById('submitBTN').disabled = true;
 
     if (!date) {
         submitError.innerHTML += "Date is required.<br>";
@@ -75,6 +79,7 @@ function validateForm() {
     if (isValid) {
         document.getElementById('reservationForm').submit();
     } else {
+        document.getElementById('submitBTN').disabled = false;
         return false; // Form submission will be prevented
     }
 }

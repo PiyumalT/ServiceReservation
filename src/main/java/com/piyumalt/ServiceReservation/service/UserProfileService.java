@@ -9,15 +9,20 @@ import org.springframework.stereotype.Service;
 public class UserProfileService {
 
     public UserProfile getUserProfile(OAuth2AuthenticationToken authenticationToken) {
-        String username =  authenticationToken.getPrincipal().getAttribute("username");
-        String name =  authenticationToken.getPrincipal().getAttribute("name");
-        String email = authenticationToken.getPrincipal().getAttribute("email");
-        String phoneNumber =  authenticationToken.getPrincipal().getAttribute("phone_number");
+// Sanitize user-related variables using TextSanitizer
+        String sanitizedUsername = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("username"));
+        String sanitizedName = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("name"));
+        String sanitizedEmail = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("email"));
+        String sanitizedPhoneNumber = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("phone_number"));
 
         JSONObject addressJsonObj = (JSONObject) authenticationToken.getPrincipal().getAttribute("address");
 
-        String country = addressJsonObj.get("country").toString();
+// Sanitize country from the address JSON
+        String sanitizedCountry = TextSanitizer.sanitizeText(addressJsonObj.get("country").toString());
 
-        return new UserProfile(username, name, email, phoneNumber, country);
+// Now you can use the sanitized variables in your application
+
+
+        return new UserProfile(sanitizedUsername, sanitizedName, sanitizedEmail, sanitizedPhoneNumber, sanitizedCountry);
     }
 }

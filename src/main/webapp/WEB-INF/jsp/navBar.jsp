@@ -8,6 +8,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <style>
+        .nav-item{
+            margin-right: 2rem;
+        }
+        .nav-item:hover{
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/home" style="font-style: italic; font-family: 'Arial', sans-serif;">
