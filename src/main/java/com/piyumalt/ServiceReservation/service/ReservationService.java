@@ -180,11 +180,21 @@ public class ReservationService {
             errors.add("Mileage must be greater than 0.");
         }
 
-        String vehicleNumber = reservation.getVehicle_no();
-        // Check vehicle number length
-        if (vehicleNumber.length() < 5 || vehicleNumber.length() > 10) {
-            errors.add("Vehicle number must be between 5 and 10 characters.");
+// Sanitize vehicle number using TextSanitizer
+        String sanitizedVehicleNumber = TextSanitizer.sanitizeText(reservation.getVehicle_no());
+
+// Set the sanitized vehicle number back to the reservation object
+        reservation.setVehicle_no(sanitizedVehicleNumber);
+
+// Check sanitized vehicle number length
+        if (sanitizedVehicleNumber.length() < 5 || sanitizedVehicleNumber.length() > 10) {
+            errors.add("Sanitized vehicle number must be between 5 and 10 characters.");
         }
+
+        // Sanitize message using TextSanitizer
+        String sanitizedMessage = TextSanitizer.sanitizeText(reservation.getMessage());
+        reservation.setMessage(sanitizedMessage);
+
 
         if (!errors.isEmpty()) {
             // Print errors
