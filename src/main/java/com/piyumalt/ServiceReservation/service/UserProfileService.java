@@ -10,27 +10,26 @@ public class UserProfileService {
 
     public UserProfile getUserProfile(OAuth2AuthenticationToken authenticationToken) {
         // Sanitize user-related variables using TextSanitizer
-        String sanitizedUsername = getAttributeAsString(authenticationToken, "username");
-        String sanitizedName = getAttributeAsString(authenticationToken, "name");
-        String sanitizedEmail = getAttributeAsString(authenticationToken, "email");
-        String sanitizedPhoneNumber = getAttributeAsString(authenticationToken, "phone_number");
+        String sanitizedUsername = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("username"));
+        String sanitizedName = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("name"));
+        String sanitizedEmail = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("email"));
+        String sanitizedPhoneNumber = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("phone_number"));
 
         JSONObject addressJsonObj = authenticationToken.getPrincipal().getAttribute("address");
-        String sanitizedCountry = getCountryAttributeAsString(addressJsonObj);
+        String sanitizedCountry = getSanitizedCountry(addressJsonObj);
 
         return new UserProfile(sanitizedUsername, sanitizedName, sanitizedEmail, sanitizedPhoneNumber, sanitizedCountry);
     }
 
-    private String getAttributeAsString(OAuth2AuthenticationToken authenticationToken, String attributeName) {
-        Object attributeValue = authenticationToken.getPrincipal().getAttribute(attributeName);
-        return (attributeValue != null) ? TextSanitizer.sanitizeText(attributeValue.toString()) : null;
-    }
-
-    private String getCountryAttributeAsString(JSONObject addressJsonObj) {
-        if (addressJsonObj != null) {
-            Object countryAttributeValue = addressJsonObj.get("country");
-            return (countryAttributeValue != null) ? TextSanitizer.sanitizeText(countryAttributeValue.toString()) : null;
+    private String getSanitizedCountry(JSONObject addressJsonObj) {
+        try {
+            if (addressJsonObj != null) {
+                Object countryAttributeValue = addressJsonObj.get("country");
+                return (countryAttributeValue != null) ? TextSanitizer.sanitizeText(countryAttributeValue.toString()) : null;
+            }
+        } catch (NullPointerException e) {
+            // Handle the exception if needed (logging, etc.)
         }
-        return null;
+        return "no country data";
     }
 }
