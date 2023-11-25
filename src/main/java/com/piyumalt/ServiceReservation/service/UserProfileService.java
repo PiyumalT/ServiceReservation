@@ -15,13 +15,8 @@ public class UserProfileService {
         String sanitizedEmail = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("email"));
         String sanitizedPhoneNumber = TextSanitizer.sanitizeText(authenticationToken.getPrincipal().getAttribute("phone_number"));
 
-        JSONObject addressJsonObj = (JSONObject) authenticationToken.getPrincipal().getAttribute("address");
-
-// Sanitize country from the address JSON
+        JSONObject addressJsonObj = authenticationToken.getPrincipal().getAttribute("address");
         String sanitizedCountry = TextSanitizer.sanitizeText(addressJsonObj.get("country").toString());
-
-// Now you can use the sanitized variables in your application
-
 
         return new UserProfile(sanitizedUsername, sanitizedName, sanitizedEmail, sanitizedPhoneNumber, sanitizedCountry);
     }

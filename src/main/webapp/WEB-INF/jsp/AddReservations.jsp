@@ -53,15 +53,15 @@
                     </div>
                     <div class="form-group">
                         <label for="vehicle_no">Vehicle Registration Number</label>
-                        <input type="text" class="form-control" path="vehicle_no" id="vehicle_no" name="vehicle_no" maxlength="10" required>
+                        <input type="text" class="form-control"  id="vehicle_no" name="vehicle_no" maxlength="10" placeholder="ABC-1234" required>
                     </div>
                     <div class="form-group">
                         <label for="mileage">Current Mileage</label>
-                        <input type="number" class="form-control" path="mileage" id="mileage" name="mileage" required min="0" max="1000000" maxlength="7" value="0">
+                        <input type="number" class="form-control" id="mileage" name="mileage" required min="0" max="1000000" maxlength="7" value="0">
                     </div>
                     <div class="form-group">
                         <label for="message">Message (Optional)</label>
-                        <textarea class="form-control" path="message" id="message" name="message" maxlength="250"></textarea>
+                        <textarea class="form-control" id="message" name="message" maxlength="250"></textarea>
                     </div>
 
                     <!-- Submit button -->

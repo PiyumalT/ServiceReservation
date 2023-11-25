@@ -20,18 +20,6 @@ public class ReservationService {
     @Autowired
     ReservationRepo reservationRepo;
 
-//    List<Reservation> getAllServiceRecords(OAuth2AuthenticationToken authentication) {
-//        String username = getUsernameFromToken(authentication);
-//        List<Reservation> reservations = reservationRepo.findByUsername(username);
-//
-//        // Sort reservations by ID in descending order
-//        List<Reservation> sortedReservations = reservations.stream()
-//                .sorted((r1, r2) -> Long.compare(r2.getId(), r1.getId()))
-//                .collect(Collectors.toList());
-//
-//        return sortedReservations;
-//    }
-
 
     public List<Reservation> getFutureServiceRecords(OAuth2AuthenticationToken authentication) {
         String username = getUsernameFromToken(authentication);
@@ -40,11 +28,16 @@ public class ReservationService {
         List<Reservation> reservations = reservationRepo.findByUsername(username);
 
         // Filter reservations where date is after the current date
-
-        return reservations.stream()
+        List<Reservation> futureReservations = reservations.stream()
                 .filter(reservation -> reservation.getDate().toLocalDate().compareTo(currentDate) > 0)
                 .collect(Collectors.toList());
+
+        // Sanitize the list of reservations directly
+        sanitizeReservations(futureReservations);
+
+        return futureReservations;
     }
+
 
     public List<Reservation> getPastServiceRecords(OAuth2AuthenticationToken authentication) {
         String username = getUsernameFromToken(authentication);
@@ -54,9 +47,11 @@ public class ReservationService {
 
         // Filter reservations where date is before or equal to the current date
 
-        return reservations.stream()
+        List<Reservation> pastReservations =  reservations.stream()
                 .filter(reservation -> reservation.getDate().toLocalDate().compareTo(currentDate) <= 0)
                 .collect(Collectors.toList());
+        sanitizeReservations(pastReservations);
+        return pastReservations;
     }
 
     public Reservation getServiceRecordById(long id, OAuth2AuthenticationToken authentication) {
@@ -67,28 +62,29 @@ public class ReservationService {
             Reservation reservation = optionalReservation.get();
 
             // Check if the reservation's username matches the token username
-            if (reservation.getUsername()==null){
+            if (reservation.getUsername() == null) {
                 return null;
-            }
-            else if (reservation.getUsername().equals(tokenUsername)) {
+            } else if (reservation.getUsername().equals(tokenUsername)) {
+                reservation.setLocation(TextSanitizer.sanitizeText(reservation.getLocation()));
+                reservation.setMessage(TextSanitizer.sanitizeText(reservation.getMessage()));
+                reservation.setVehicle_no(TextSanitizer.sanitizeText(reservation.getVehicle_no()));
                 return reservation;
             } else {
                 // Unauthorized access: Reservation username doesn't match token username
-                System.out.println("Unauthorized access detected. User"+tokenUsername+" attempted to access reservation with ID: " + id);
+                System.out.println("Unauthorized access detected. User" + tokenUsername + " attempted to access reservation with ID: " + id);
                 return null;
             }
         } else {
             // Reservation with the given ID not found
-            System.out.println("Unauthorized access detected. User"+tokenUsername+" attempted to access reservation with ID: " + id);
+            System.out.println("Unauthorized access detected. User" + tokenUsername + " attempted to access reservation with ID: " + id);
             return null;
         }
     }
 
 
-
     public long addServiceRecord(Reservation reservation, OAuth2AuthenticationToken authentication) {
         // Validate reservation data
-        String username = getUsernameFromToken(authentication) ;
+        String username = getUsernameFromToken(authentication);
         if (!isValidReservation(reservation)) {
             System.out.println("Invalid reservation data detected. From user: " + username);
             return 0;
@@ -97,8 +93,7 @@ public class ReservationService {
         if (username == null) {
             System.out.println("Invalid username");
             return 0;
-        }
-        else {
+        } else {
             reservation.setUsername(username);
         }
         // Save reservation to the database
@@ -140,7 +135,6 @@ public class ReservationService {
             return false;
         }
     }
-
 
 
     private boolean isValidReservation(Reservation reservation) {
@@ -224,4 +218,15 @@ public class ReservationService {
         // Check if the reservation's date is in the future
         return reservationDate.compareTo(currentDate) <= 0;
     }
+
+    public void sanitizeReservations(List<Reservation> reservations) {
+        for (Reservation reservation : reservations) {
+            // Sanitize text fields directly in the existing list
+            reservation.setLocation(TextSanitizer.sanitizeText(reservation.getLocation()));
+            reservation.setMessage(TextSanitizer.sanitizeText(reservation.getMessage()));
+            reservation.setVehicle_no(TextSanitizer.sanitizeText(reservation.getVehicle_no()));
+
+        }
+    }
+
 }

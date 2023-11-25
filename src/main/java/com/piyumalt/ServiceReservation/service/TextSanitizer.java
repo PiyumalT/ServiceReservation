@@ -9,12 +9,11 @@ public class TextSanitizer {
         // Remove potentially harmful HTML tags
         return (removeHtmlTags(escapedText));
 
-
     }
 
     private static String escapeHtmlEntities(String input) {
         return input
-                .replace("&", "&amp;")
+//                .replace("&", "&amp;")
                 .replace("<", "&lt;")
                 .replace(">", "&gt;")
                 .replace("\"", "&quot;")
